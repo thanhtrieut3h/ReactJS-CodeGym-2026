@@ -1,5 +1,5 @@
 
-const HeaderComponent = ({ title = "Header page", id = 10, name = "Thanh Trieu" }) => {
+const HeaderComponent = ({ title = "Header page", id = 10, name = "Thanh Trieu", isShowNav = false }) => {
     // noi xu ly logic cua ham bang js
     // console.log(props.title);
 
@@ -9,10 +9,12 @@ const HeaderComponent = ({ title = "Header page", id = 10, name = "Thanh Trieu" 
         <>
            <header>
                <h1>{title} - {id}</h1>
-           </header>
-           <nav>
+           </header> 
+           { isShowNav && (
+            <nav>
                <h2> This is a navigation - {name}</h2>
-           </nav>
+            </nav>
+           )}
         </>
     );
 }

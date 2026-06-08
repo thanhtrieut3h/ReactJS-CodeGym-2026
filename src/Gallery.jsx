@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { Button, Col, Row } from "antd";
 import { sculptureList } from "./fake_data/data";
 
 export default function Gallery() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0); // Hooks State : cap nhat thay doi state
   const [showMore, setShowMore] = useState(false);
 
   const handleNextClick = () => {
@@ -20,30 +21,40 @@ export default function Gallery() {
   let checkIndexNext = sculptureList.length - 1;
   let checkIndexPrev = 0;
   return (
-    <>
-      {index === checkIndexPrev 
-      ? (<button disabled> Previous </button>)
-      : (<button onClick={handlePreviousClick}> Previous </button>)
-      }
+    <Row>
+      <Col span={12} offset={6}>
+        {index === checkIndexPrev ? (
+          <Button disabled> Previous </Button>
+        ) : (
+          <Button type="primary" onClick={handlePreviousClick}>
+            {" "}
+            Previous{" "}
+          </Button>
+        )}
 
-      {index === checkIndexNext 
-      ? (<button disabled> Next </button>)
-      : (<button onClick={handleNextClick}> Next </button>)
-      }
-      
-      <h2>
-        <i>{sculpture.name}</i> by {sculpture.artist}
-      </h2>
-      <h3>
-        ({index + 1} of {sculptureList.length})
-      </h3>
-      <button onClick={handleMoreClick}>
-        {showMore ? "Hide" : "Show"} details
-      </button>
-      {showMore && <p>{sculpture.description}</p>}
-      <br />
-      <br />
-      <img src={sculpture.url} alt={sculpture.alt} />
-    </>
+        {index === checkIndexNext ? (
+          <Button disabled> Next </Button>
+        ) : (
+          <Button type="primary" onClick={handleNextClick}>
+            {" "}
+            Next{" "}
+          </Button>
+        )}
+
+        <h2>
+          <i>{sculpture.name}</i> by {sculpture.artist}
+        </h2>
+        <h3>
+          ({index + 1} of {sculptureList.length})
+        </h3>
+        <button onClick={handleMoreClick}>
+          {showMore ? "Hide" : "Show"} details
+        </button>
+        {showMore && <p>{sculpture.description}</p>}
+        <br />
+        <br />
+        <img src={sculpture.url} alt={sculpture.alt} />
+      </Col>
+    </Row>
   );
 }

@@ -47,7 +47,7 @@ const TodoApp = () => {
       <Col span={12} offset={6}>
         <AddTodo
           change={changeNameTodo}
-          value={nameTodo}
+          //value={nameTodo}
           add={addTodo}
         />
         <TodoList

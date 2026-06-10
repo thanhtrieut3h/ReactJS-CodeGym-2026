@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const { Title } = Typography;
 const { Search } = Input;
 
-const AddTodo = ({ change, value, add }) => {
+const AddTodo = ({ change, add }) => {
   return (
     <Row style={{ margin: "20px 0px" }}>
       <Col span={24}>
@@ -14,7 +14,7 @@ const AddTodo = ({ change, value, add }) => {
             placeholder="Enter data ..."
             enterButton={<PlusOutlined/>}
             allowClear
-            value={value}
+            //value={value}
             onChange={change}
             onSearch={val => add(val)}
         />
@@ -25,6 +25,6 @@ const AddTodo = ({ change, value, add }) => {
 AddTodo.propTypes = {
   change: PropTypes.func.isRequired,
   add: PropTypes.func.isRequired,
-  value: PropTypes.string
+  //value: PropTypes.string
 }
 export default AddTodo;

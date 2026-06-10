@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import Home from './products/Product';
+import Home from './Football/WorldCup';
 import 'antd/dist/reset.css';
 
 createRoot(document.getElementById('root')).render(

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { apiFootball } from './api/football';
+import { Col, Row, Skeleton } from "antd";
+import ItemFootball from "./components/ItemFootball";
 
 const WorldCup = () => {
     const[loading, setLoading] = useState(false);
@@ -11,7 +13,8 @@ const WorldCup = () => {
             try {
                 setLoading(true);
                 const data = await apiFootball.getDataFootball();
-                console.log(data);
+                setFootball(data);
+                //console.log(data);
             } catch (error) {
                 setError(error);
                 console.log(error);
@@ -22,8 +25,27 @@ const WorldCup = () => {
         getData();
     }, []);
 
+    if(loading){
+        return(
+            <Row>
+                <Col span={24}>
+                    <Skeleton active />
+                </Col>
+            </Row>
+        )
+    }
+    if(error !== null){
+        return (
+            <Row>
+                <Col span={12} offset={6}>
+                    <p style={{color: 'red', textAlign: 'center'}}>{error}</p>
+                </Col>
+            </Row>
+        )
+    }
+
     return (
-        <h1> Test data Football</h1>
+        <ItemFootball football={football}/>
     )
 }
 export default WorldCup;

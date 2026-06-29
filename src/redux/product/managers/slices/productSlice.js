@@ -26,3 +26,10 @@ const productSlice = createSlice({
         }
     }
 });
+export const {
+    getProductRequest,
+    getProductSuccess,
+    getProductFailure,
+    clearError
+} = productSlice.actions;
+export default productSlice.reducer;

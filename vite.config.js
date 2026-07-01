@@ -8,6 +8,9 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  optimizeDeps: {
+    include: ['antd', '@ant-design/icons'],
+  },
   server: {
     cors: false,
     proxy: {
@@ -16,6 +19,6 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
-    },
+    }
   }
 })
